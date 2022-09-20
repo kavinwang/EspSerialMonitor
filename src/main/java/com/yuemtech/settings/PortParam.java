@@ -3,6 +3,9 @@ package com.yuemtech.settings;
 public class PortParam {
 	private String portName;
 	private Integer bandRate = 5;
+	private Integer parity = 0;
+	private Integer dataBits = 3;
+	private Integer stopBits = 0;
 	
 	public String getPortName() {
 		return portName;
@@ -43,10 +46,7 @@ public class PortParam {
 	public void setStopBits(Integer stopBits) {
 		this.stopBits = stopBits;
 	}
-	
-	private Integer parity = 0;
-	private Integer dataBits = 3;
-	private Integer stopBits = 0;
+
 	
 	public boolean isReturnCheck() {
 		return returnCheck;

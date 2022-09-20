@@ -67,14 +67,17 @@ public class SerialController implements SerialPortEventListener{
 		if(portName == null || "".equals(portName.trim())) throw new Exception("need comm port.");
 		if(listener != null) this.listener = listener;
 
-		if(!portName.equals(this.portName)){
+		if (!portName.equals(this.portName)) {
 			String commStr = "";
 			try {
 				int comport = Integer.parseInt(portName);
 				String osName = System.getProperty("os.name");
-				if (osName.contains("Windows")) commStr = "COM" + comport;
-				else if (osName.contains("Linux")) commStr = "/dev/ttyS" + (comport - 1);
-				else commStr = portName;
+				if (osName.contains("Windows"))
+					commStr = "COM" + comport;
+				else if (osName.contains("Linux"))
+					commStr = "/dev/ttyS" + (comport - 1);
+				else
+					commStr = portName;
 			} catch (Exception e) {
 				commStr = portName;
 			}
@@ -101,6 +104,7 @@ public class SerialController implements SerialPortEventListener{
 					this.serialPort.addEventListener(this);
 					outputStream = this.serialPort.getOutputStream();
 					inputStream = this.serialPort.getInputStream();
+					return;
 				}else commPort.close();
 			}
 		}
@@ -160,7 +164,9 @@ public class SerialController implements SerialPortEventListener{
 			case SerialPortEvent.PE: //ParityError
 			case SerialPortEvent.CD: //CarrierDetect
 			case SerialPortEvent.RI: //RingIndicator
+				break;
 			case SerialPortEvent.OUTPUT_BUFFER_EMPTY:
+			System.out.println("empty ...");
 				break;
 			case SerialPortEvent.CTS:case SerialPortEvent.DSR:
 				break;
@@ -177,7 +183,7 @@ public class SerialController implements SerialPortEventListener{
 							}
 							av = inputStream.available();
 							if(av == 0) {
-								Thread.sleep(50);
+								Thread.sleep(100);
 								av = inputStream.available();
 							}
 						} while(av != 0);

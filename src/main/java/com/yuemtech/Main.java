@@ -3,24 +3,30 @@ package com.yuemtech;
 import com.yuemtech.settings.PortSetter;
 import com.yuemtech.support.SerialController;
 
-import java.util.List;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-public class Main {
-	public static void main(String[] args)throws Exception {
-		List<String> ports = SerialController.findPorts();
-		ports.forEach(System.out::println);
-		
-		System.out.println(PortSetter.BandRates[PortSetter.getInstance().getLeftPortSetting().getBandRate()]);
-		System.out.println(PortSetter.DataBits[PortSetter.getInstance().getLeftPortSetting().getDataBits()]);
-		System.out.println(PortSetter.Parities[PortSetter.getInstance().getLeftPortSetting().getParity()]);
-		System.out.println(PortSetter.StopBits[PortSetter.getInstance().getLeftPortSetting().getStopBits()]);
+public class Main extends Application{
+	public static void main(String[] args) throws Exception {
+		launch(args);
+	}
 
-//		SerialController sc = new SerialController(portSetter.getLeftPortSetting().getBandRate());
-//		sc.openPort("tty.BLTH", new SerialController.SerialPortListener() {
-//			@Override
-//			public void dataRecieved(byte[] datas) {
-//				System.out.println(new String(datas));
-//			}
-//		});
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		SerialController sc = new SerialController(PortSetter.getPortBandRate(PortSetter.PORT_LEFT));
+		sc.openPort("4", new SerialController.SerialPortListener() {
+			@Override
+			public void dataRecieved(byte[] datas) {
+				System.out.println(new String(datas));
+			}
+		});
+
+		BorderPane root = new BorderPane();
+		Scene scene = new Scene(root,400,400);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+
 	}
 }

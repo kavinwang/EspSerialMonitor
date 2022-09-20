@@ -1,6 +1,5 @@
 package com.yuemtech;
 
-import com.yuemtech.settings.PortParam;
 import com.yuemtech.settings.PortSetter;
 
 import javax.swing.*;
@@ -8,19 +7,19 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class SettingDialog extends JDialog {
-	private JComboBox leftPortSelect;
-	private JComboBox leftDataBitSelect;
-	private JComboBox leftParitySelect;
-	private JComboBox leftStopBitSelect;
-	private JComboBox leftBandRateSelect;
+	private JComboBox<String> leftPortSelect;
+	private JComboBox<String> leftDataBitSelect;
+	private JComboBox<String> leftParitySelect;
+	private JComboBox<String> leftStopBitSelect;
+	private JComboBox<String> leftBandRateSelect;
 	private JCheckBox leftReturnCheck;
 	private JCheckBox leftNewLineCheck;
 	
-	private JComboBox rightPortSelect;
-	private JComboBox rightBandRateSelect;
-	private JComboBox rightDataBitSelect;
-	private JComboBox rightParitySelect;
-	private JComboBox rightStopBitSelect;
+	private JComboBox<String> rightPortSelect;
+	private JComboBox<String> rightBandRateSelect;
+	private JComboBox<String> rightDataBitSelect;
+	private JComboBox<String> rightParitySelect;
+	private JComboBox<String> rightStopBitSelect;
 	private JCheckBox rightReturnCheck;
 	private JCheckBox rightNewLineCheck;
 	

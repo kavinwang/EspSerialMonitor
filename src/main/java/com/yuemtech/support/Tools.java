@@ -14,8 +14,6 @@ import java.nio.channels.SocketChannel;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
@@ -652,41 +650,7 @@ public class Tools {
 		}
 		return delFile.delete();
 	}
-	public static String enBCode(Hashtable values){
-		if(values==null)return "";
-		StringBuffer sb = new StringBuffer();
-		for(Iterator ite = values.keySet().iterator();ite.hasNext();){
-			String name = ite.next().toString();
-			String value = values.get(name).toString();
-			String nameLen = adjustString(String.valueOf(name.getBytes().length), '0', 4, true);
-			String valueLen = adjustString(String.valueOf(value.getBytes().length), '0', 4, true);
-			sb.append(nameLen).append(name).append(valueLen).append(value);
-		}
-		return sb.toString();
-	}
 
-	public static Hashtable<String,String> deBCode(byte[] source){
-		if(source==null||source.length<8)return new Hashtable<String,String>();
-		Hashtable<String,String> result = new Hashtable<String,String>();
-		ByteBuffer bb = new ByteBuffer(source);
-		int offset = 0;
-		while(offset<bb.length()){
-			int len = Integer.parseInt(new String(bb.getValueN(offset, 4)));
-			offset+=4;
-			String name = new String(bb.getValueN(offset, len));
-			offset+=len;
-			len = Integer.parseInt(new String(bb.getValueN(offset, 4)));
-			offset+=4;
-			if(len==0){
-				result.put(name, "");
-			}else{
-				String value = new String(bb.getValueN(offset, len));
-				offset+=len;
-				result.put(name, value);
-			}
-		}
-		return result;
-	}
 
 	/**
 	 * 数字金额字符串转汉字   added wyi 2006-09-29
