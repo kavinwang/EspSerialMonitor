@@ -628,28 +628,7 @@ public class Tools {
 		return bb.getValue();
 
 	}
-
-	public static String DateToStr(java.util.Date date) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-		return format.format(date);
-	}
-
-	public static String DateToStr(java.sql.Date date) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-		return format.format(date);
-
-	}
-
-	public static boolean deleteFile(File delFile) {
-		if (delFile.isDirectory()) {
-			File[] allFiles = delFile.listFiles();
-			for (int i = 0; i < allFiles.length; i++) {
-				if (!deleteFile(allFiles[i]))
-					return false;
-			}
-		}
-		return delFile.delete();
-	}
+	
 
 
 	/**
