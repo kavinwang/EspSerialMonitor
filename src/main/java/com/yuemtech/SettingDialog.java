@@ -51,21 +51,21 @@ public class SettingDialog extends JDialog {
 			}
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
-		this.leftPortSelect.setSelectedItem(PortSetter.getInstance().getLeftPortSetting().getPortName()); //需要进行判断和检查
-		this.leftDataBitSelect.setSelectedIndex(PortSetter.getInstance().getLeftPortSetting().getDataBits());
-		this.leftParitySelect.setSelectedIndex(PortSetter.getInstance().getLeftPortSetting().getParity());
-		this.leftStopBitSelect.setSelectedIndex(PortSetter.getInstance().getLeftPortSetting().getStopBits());
-		this.leftBandRateSelect.setSelectedIndex(PortSetter.getInstance().getLeftPortSetting().getBandRate());
-		this.leftReturnCheck.setSelected(PortSetter.getInstance().getLeftPortSetting().isReturnCheck());
-		this.leftNewLineCheck.setSelected(PortSetter.getInstance().getLeftPortSetting().isNewLineCheck());
+		this.leftPortSelect.setSelectedItem(PortSetter.getPortName(PortSetter.PORT_MONITOR)); //需要进行判断和检查
+		this.leftDataBitSelect.setSelectedIndex(PortSetter.getPortDataBit(PortSetter.PORT_MONITOR));
+		this.leftParitySelect.setSelectedIndex(PortSetter.getPortParity(PortSetter.PORT_MONITOR));
+		this.leftStopBitSelect.setSelectedIndex(PortSetter.getPortStopBit(PortSetter.PORT_MONITOR));
+		this.leftBandRateSelect.setSelectedIndex(PortSetter.getPortBandRate(PortSetter.PORT_MONITOR));
+		this.leftReturnCheck.setSelected(PortSetter.isReturnCheck(PortSetter.PORT_MONITOR));
+		this.leftNewLineCheck.setSelected(PortSetter.isNewLineCheck(PortSetter.PORT_MONITOR));
 		
-		this.rightPortSelect.setSelectedItem(PortSetter.getInstance().getRightPortSetting().getPortName()); //需要进行判断和检查
-		this.rightDataBitSelect.setSelectedIndex(PortSetter.getInstance().getRightPortSetting().getDataBits());
-		this.rightParitySelect.setSelectedIndex(PortSetter.getInstance().getRightPortSetting().getParity());
-		this.rightStopBitSelect.setSelectedIndex(PortSetter.getInstance().getRightPortSetting().getStopBits());
-		this.rightBandRateSelect.setSelectedIndex(PortSetter.getInstance().getRightPortSetting().getBandRate());
-		this.rightReturnCheck.setSelected(PortSetter.getInstance().getRightPortSetting().isReturnCheck());
-		this.rightNewLineCheck.setSelected(PortSetter.getInstance().getRightPortSetting().isNewLineCheck());
+		this.rightPortSelect.setSelectedItem(PortSetter.getPortName(PortSetter.PORT_INTERACT)); //需要进行判断和检查
+		this.rightDataBitSelect.setSelectedIndex(PortSetter.getPortDataBit(PortSetter.PORT_INTERACT));
+		this.rightParitySelect.setSelectedIndex(PortSetter.getPortParity(PortSetter.PORT_INTERACT));
+		this.rightStopBitSelect.setSelectedIndex(PortSetter.getPortStopBit(PortSetter.PORT_INTERACT));
+		this.rightBandRateSelect.setSelectedIndex(PortSetter.getPortBandRate(PortSetter.PORT_INTERACT));
+		this.rightReturnCheck.setSelected(PortSetter.isReturnCheck(PortSetter.PORT_INTERACT));
+		this.rightNewLineCheck.setSelected(PortSetter.isNewLineCheck(PortSetter.PORT_INTERACT));
 	}
 	
 	private void onOK() {

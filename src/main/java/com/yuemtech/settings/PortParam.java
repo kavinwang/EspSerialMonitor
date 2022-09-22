@@ -1,69 +1,51 @@
 package com.yuemtech.settings;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class PortParam {
 	private String portName;
-	private Integer bandRate = 5;
-	private Integer parity = 0;
-	private Integer dataBits = 3;
-	private Integer stopBits = 0;
+	@Builder.Default private Integer bandRate = 6;
+	@Builder.Default private Integer parity = 0;
+	@Builder.Default private Integer dataBits = 3;
+	@Builder.Default private Integer stopBits = 0;
+
+	private List<String> commands;
+
+	@Builder.Default private boolean hexMode = false;
+	@Builder.Default private boolean withReturn = true;
+	@Builder.Default private boolean withNewLine = true;
 	
-	public String getPortName() {
-		return portName;
+	@Builder.Default private boolean opened = false;
+	
+	public void addCommand(String command) {
+		if (this.commands == null)
+			this.commands = new ArrayList<>();
+		this.commands.add(command);
+		if (this.commands.size() > 64)
+			this.commands = this.commands.subList(this.commands.size() - 64, 64);
 	}
 	
-	public void setPortName(String portName) {
-		this.portName = portName;
+	public void removeCommand(int index) {
+		if (this.commands == null)
+			this.commands = new ArrayList<>();
+		if (index > this.commands.size() - 1)
+			return;
+		this.commands.remove(index);
 	}
-	
-	public Integer getBandRate() {
-		return bandRate;
-	}
-	
-	public void setBandRate(Integer bandRate) {
-		this.bandRate = bandRate;
-	}
-	
-	public Integer getParity() {
-		return parity;
-	}
-	
-	public void setParity(Integer parity) {
-		this.parity = parity;
-	}
-	
-	public Integer getDataBits() {
-		return dataBits;
-	}
-	
-	public void setDataBits(Integer dataBits) {
-		this.dataBits = dataBits;
-	}
-	
-	public Integer getStopBits() {
-		return stopBits;
-	}
-	
-	public void setStopBits(Integer stopBits) {
-		this.stopBits = stopBits;
+
+	public void clearCommands() {
+		this.commands = new ArrayList<>();
 	}
 
 	
-	public boolean isReturnCheck() {
-		return returnCheck;
-	}
-	
-	public void setReturnCheck(boolean returnCheck) {
-		this.returnCheck = returnCheck;
-	}
-	
-	public boolean isNewLineCheck() {
-		return newLineCheck;
-	}
-	
-	public void setNewLineCheck(boolean newLineCheck) {
-		this.newLineCheck = newLineCheck;
-	}
-	
-	boolean returnCheck = true;
-	boolean newLineCheck = true;
 }
