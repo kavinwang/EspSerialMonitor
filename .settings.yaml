@@ -1,6 +1,6 @@
 ---
 monitor:
-  portName: null
+  portName: tty.usbserial-1440
   bandRate: 6
   parity: 0
   dataBits: 3

@@ -82,8 +82,8 @@ public class PortSetter {
 			Setting setting = yamlMapper.readValue(reader, Setting.class);
 			monitorPortSetting = setting.monitor;
 			interactPortSetting = setting.interact;
-			System.out.println(monitorPortSetting.getBandRate());
-			System.out.println(interactPortSetting.getBandRate());
+			System.out.println(BandRates[monitorPortSetting.getBandRate()]);
+			System.out.println(BandRates[interactPortSetting.getBandRate()]);
 		}
 	}
 	
