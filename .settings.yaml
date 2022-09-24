@@ -1,0 +1,23 @@
+---
+monitor:
+  portName: null
+  bandRate: 6
+  parity: 0
+  dataBits: 3
+  stopBits: 0
+  commands: null
+  hexMode: false
+  withReturn: true
+  withNewLine: true
+  opened: false
+interact:
+  portName: null
+  bandRate: 6
+  parity: 0
+  dataBits: 3
+  stopBits: 0
+  commands: null
+  hexMode: false
+  withReturn: true
+  withNewLine: true
+  opened: false
